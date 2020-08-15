@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>OUR TIMER</title>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            background: url('img/SEA.jpg');
+            background-attachment: scroll;
+            font-size: 85%;
+            margin: 0;
+        }
+        h1{
+            font-size: 340%;
+            font-weight: 7000
+            font-color: rgb(253, 99, 125);
+        }
+        
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+        }
+        
+        .content {
+            position: absolute;
+            width: 48%;
+            top: 10%;
+            transform: translate(100%, 90%);
+            text-align: right;
+        }
+        
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+        
+        .timer b {
+            color: rgb(253, 99, 125);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Story about</h1>
+        <h2>How A Boy Fell In Love With A Girl</h2>
+        <h3>For</h3>
+        <div class="timer">
+            <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+        </div>
+    </div>
+    <script language="javascript">
+        function timer() {
+          window.setTimeout("show_date_time()", 1000);
+          var start = new Date("16/8/2020 00:00:00"); // 2020.6.4
+            var t = new Date().getTime() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('h').innerHTML = h;
+            document.getElementById('m').innerHTML = m;
+            document.getElementById('s').innerHTML = s;
+        }
+        timer();
+    </script>
+    <script language="javascript">
+	    function show_date_time() {
+	        window.setTimeout("show_date_time()", 1000);
+	        BirthDay = new Date("2020-06-04 22:00:43");//这个日期是可以修改的
+	        today = new Date();
+	        timeold = (today.getTime() - BirthDay.getTime());
+	        sectimeold = timeold / 1000
+	        secondsold = Math.floor(sectimeold);
+	        msPerDay = 24 * 60 * 60 * 1000
+	        e_daysold = timeold / msPerDay
+	        daysold = Math.floor(e_daysold);
+	        e_hrsold = (e_daysold - daysold) * 24;
+	        hrsold = Math.floor(e_hrsold);
+	        e_minsold = (e_hrsold - hrsold) * 60;
+	        minsold = Math.floor((e_hrsold - hrsold) * 60);
+	        seconds = Math.floor((e_minsold - minsold) * 60);
+          document.getElementById('d').innerHTML = daysold;
+          document.getElementById('h').innerHTML = hrsold;
+          document.getElementById('m').innerHTML = minsold;
+          document.getElementById('s').innerHTML = seconds;
+	    }
+	    show_date_time();
+	</script>
+
+</body>
+
+</html>
+
